@@ -15,7 +15,7 @@
 
   <Properties>
     <DisplayName>UWPFinalProject</DisplayName>
-    <PublisherDisplayName>themi</PublisherDisplayName>
+    <PublisherDisplayName>T7</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,10 +32,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="UWPFinalProject.App">
       <uap:VisualElements
-        DisplayName="UWPFinalProject"
+        DisplayName="Cirrus"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="UWPFinalProject"
+        Description="A simple UWP client for interacting with SoundCloud."
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

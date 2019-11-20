@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("UWPFinalProject")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Cirrus")]
+[assembly: AssemblyDescription("A simple UWP application for interacting with SoundCloud.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("T7")]
 [assembly: AssemblyProduct("UWPFinalProject")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]

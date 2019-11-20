@@ -7,8 +7,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Grid>
-
-    </Grid>
+    <NavigationView x:Name="nav" AlwaysShowHeader="False" Header="Home" IsBackButtonVisible="Collapsed" IsSettingsVisible="True" RequestedTheme="Default">
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="HomeNavItem" Content="Home" Tag="home">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE80F;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Uid="MyMusicNavItem" Content="My music" Tag="mymusic">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE8D6;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Uid="NowPlayingNavItem" Content="Now playing" Tag="nowplaying">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE768;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
+    </NavigationView>
 </Page>
