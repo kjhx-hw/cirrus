@@ -40,6 +40,10 @@
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.9, )"
+            },
+            "SoundCloud.Api": {
+              "target": "Package",
+              "version": "[3.0.0, )"
             }
           },
           "imports": [
