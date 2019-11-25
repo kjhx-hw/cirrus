@@ -16,6 +16,11 @@ variables:
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
 
 steps:
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'Application'
+    publishLocation: 'Container'
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
