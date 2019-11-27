@@ -13,11 +13,19 @@ namespace UWPFinalProject.Model {
         private const string CLIENT_KEY = "b4901850db2a3fd767b36a91a2793cef";
         private ISoundCloudClient client = null;
 
+        /// <summary>
+        /// Class constructor initializes API connection with our
+        /// CLIENT_KEY, and saves that key for the rest of our queries.
+        /// </summary>
         public CloudAPI() {
             client = SoundCloudClient.CreateUnauthorized(CLIENT_KEY);
             Debug.WriteLine("CloudAPI instantiated.");
         }
 
+        /// <summary>
+        /// When passed in a single Track Id, fetches it from the API
+        /// and returns that Track back to the caller.
+        /// </summary>
         public async Task<Track> GetTrack(int Id) {
             Track result = null;
 
