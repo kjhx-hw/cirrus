@@ -13,7 +13,12 @@
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="ImageTextDataTemplate" x:DataType="local:Track">
                     <StackPanel Height="226" Width="180" Margin="12" AutomationProperties.Name="{x:Bind TrackName}">
-                        <Image Source="{x:Bind TrackArtUrl}" Height="180" Width="180" Stretch="UniformToFill"/>
+                        <Grid Width="180" Height="180">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="../Assets/Placeholder.jpg"></ImageBrush>
+                            </Grid.Background>
+                            <Image Source="{x:Bind TrackArtUrl}" Stretch="UniformToFill" />
+                        </Grid>
                         <StackPanel Margin="0,12">
                             <TextBlock Text="{x:Bind TrackName}"/>
                             <TextBlock Text="{x:Bind ArtistName}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
