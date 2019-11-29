@@ -2,14 +2,30 @@
     x:Class="UWPFinalProject.Pages.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UWPFinalProject.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:UWPFinalProject.Pages"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Text="Home" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="48" FontWeight="Normal"/>
-
+        <GridView ItemsSource="{x:Bind ViewModel.Tracks}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:Name="ImageTextDataTemplate" x:DataType="local:Track">
+                    <StackPanel Height="280" Width="180" Margin="12" AutomationProperties.Name="{x:Bind TrackName}">
+                        <Image Source="Placeholder.png" Height="180" Width="180" Stretch="UniformToFill"/>
+                        <StackPanel Margin="0,12">
+                            <TextBlock Text="{x:Bind TrackName}"/>
+                            <TextBlock Text="{x:Bind ArtistName}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid MaximumRowsOrColumns="10" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
     </Grid>
 </Page>
