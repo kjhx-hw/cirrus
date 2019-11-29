@@ -11,12 +11,9 @@ namespace UWPFinalProject.Pages {
         public ObservableCollection<Track> Tracks { get { return this.tracks; } }
 
         public TrackViewModel() {
-            this.tracks.Add(new Track());
-            this.tracks.Add(new Track());
-            this.tracks.Add(new Track());
-            this.tracks.Add(new Track());
-            this.tracks.Add(new Track());
-            this.tracks.Add(new Track());
+            for (int i = 0; i < 50; i++) {
+                this.tracks.Add(new Track());
+            }
         }
     }
 }

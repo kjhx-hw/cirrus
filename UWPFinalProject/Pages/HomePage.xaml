@@ -9,11 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <GridView ItemsSource="{x:Bind ViewModel.Tracks}">
+        <GridView ItemsSource="{x:Bind ViewModel.Tracks}" Margin="6, 6, 6, 6">
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="ImageTextDataTemplate" x:DataType="local:Track">
-                    <StackPanel Height="280" Width="180" Margin="12" AutomationProperties.Name="{x:Bind TrackName}">
-                        <Image Source="Placeholder.png" Height="180" Width="180" Stretch="UniformToFill"/>
+                    <StackPanel Height="226" Width="180" Margin="12" AutomationProperties.Name="{x:Bind TrackName}">
+                        <Image Source="{x:Bind TrackArtUrl}" Height="180" Width="180" Stretch="UniformToFill"/>
                         <StackPanel Margin="0,12">
                             <TextBlock Text="{x:Bind TrackName}"/>
                             <TextBlock Text="{x:Bind ArtistName}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
