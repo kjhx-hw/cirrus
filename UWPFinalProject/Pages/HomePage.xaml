@@ -8,8 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <GridView ItemsSource="{x:Bind ViewModel.Tracks}" Margin="6, 6, 6, 6">
+    <RelativePanel Name="RootPanel">
+        <TextBlock Name="headerText" Text="Popular now" Margin="18, 18, 18, 6" Style="{StaticResource TitleTextBlockStyle}" Visibility="Collapsed"></TextBlock>
+        <ProgressRing Name="ProgressRing" IsActive="True" Visibility="Visible" HorizontalAlignment="Center" Width="50" Height="50" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+        <GridView Name="TrackGrid" ItemsSource="{x:Bind ViewModel.Tracks}" Margin="6, 6, 6, 6" RelativePanel.Below="headerText" Visibility="Collapsed">
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="ImageTextDataTemplate" x:DataType="local:Track">
                     <StackPanel Height="226" Width="180" Margin="12" AutomationProperties.Name="{x:Bind TrackName}">
@@ -32,5 +34,5 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
-    </Grid>
+    </RelativePanel>
 </Page>

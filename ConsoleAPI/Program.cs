@@ -16,6 +16,7 @@ namespace ConsoleAPI {
             ISoundCloudClient client = SoundCloudClient.CreateUnauthorized(CLIENT_KEY);
             Console.WriteLine("Created API client with ID " + CLIENT_KEY);
 
+            Console.WriteLine("Fetching Top 40...");
             var playlist = await client.Playlists.GetAsync(212109430);
             foreach (var item in playlist.Tracks) {
                 Console.WriteLine(item.Title);

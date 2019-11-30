@@ -8,7 +8,7 @@ namespace UWPFinalProject.Pages {
     public class Track {
         public string TrackName { get; set; }
         public string ArtistName { get; set; }
-        public int TrackId { get; set; }
+        public long TrackId { get; set; }
         public string TrackArtUrl { get; set; }
 
         public Track() {

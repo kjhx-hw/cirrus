@@ -9,7 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace UWPFinalProject.Model {
-    class CloudAPI {
+    public class CloudAPI {
+        private const int PLAYLIST_LENGTH_HARD_LIMIT = 100;
+
         private const string CLIENT_KEY = "b4901850db2a3fd767b36a91a2793cef";
         private ISoundCloudClient client = null;
 
@@ -19,7 +21,7 @@ namespace UWPFinalProject.Model {
         /// </summary>
         public CloudAPI() {
             client = SoundCloudClient.CreateUnauthorized(CLIENT_KEY);
-            Debug.WriteLine("CloudAPI instantiated.");
+            Debug.WriteLine("INF: CloudAPI instantiated.");
         }
 
         /// <summary>
@@ -30,6 +32,7 @@ namespace UWPFinalProject.Model {
             Track result = null;
 
             try {
+                Debug.WriteLine("INF: Fetching track " + Id + "...");
                 result = await client.Tracks.GetAsync(Id);
             } catch (SoundCloud.Api.Exceptions.SoundCloudApiException e) {
                 Debug.WriteLine("ERR: GetTrackData failed: " + e.HttpStatusCode);
@@ -58,12 +61,33 @@ namespace UWPFinalProject.Model {
         }
 
         /// <summary>
+        /// Fetches contents of Top 40 US playlist and returns it as
+        /// a list of Tracks. There is no way to control the size of
+        /// the playlist returned.
+        /// </summary>
+        public async Task<List<Track>> GetPopularNow() {
+            List<Track> result = null;
+
+            Debug.WriteLine("INF: Fetching Top 40 playlist...");
+            Playlist list = await client.Playlists.GetAsync(212109430);
+
+            foreach (var item in list.Tracks) {
+                if (item.Streamable == true) {
+                    result.Add(item);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Tests the API connection by requesting the Track Id of
         /// a known track, then comparing the returned value. This
         /// function is for early debug only.
         /// </summary>
         public async Task<string> ProbeAsync() {
             string callback = "404";
+            Debug.WriteLine("INF: Calling ProbeAsync()...");
             Track result = await client.Tracks.GetAsync(192688656);
             Debug.WriteLine("Sent = 192688656");
             callback = result.Id.ToString();
