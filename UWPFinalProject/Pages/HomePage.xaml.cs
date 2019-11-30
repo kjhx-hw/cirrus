@@ -38,6 +38,8 @@ namespace UWPFinalProject.Pages {
         private void TrackGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
             Track selectedItem = TrackGrid.SelectedItems[0] as Track;
             Debug.WriteLine(selectedItem.TrackId);
+            Frame.Navigate(typeof(PlayerPage), selectedItem);
+            
         }
     }
 }

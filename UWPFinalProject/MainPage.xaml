@@ -32,7 +32,8 @@
         </NavigationView.MenuItems>
 
         <Frame x:Name="ContentFrame" 
-           NavigationFailed="ContentFrame_OnNavigationFailed"/>
+           NavigationFailed="ContentFrame_OnNavigationFailed"
+           Navigated="ContentFrame_Navigated"/>
 
     </NavigationView>
 </Page>
