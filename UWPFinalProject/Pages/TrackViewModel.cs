@@ -19,6 +19,7 @@ namespace UWPFinalProject.Pages {
         /// the view with 50 of the default track.
         /// </summary>
         public TrackViewModel() {
+            Debug.WriteLine("WRN: Using default dataset.");
             for (int i = 0; i < 50; i++) {
                 this.tracks.Add(new Track());
             }

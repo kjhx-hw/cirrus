@@ -15,7 +15,7 @@ namespace UWPFinalProject.Pages {
             // Defaults
             this.TrackName = "Hobnotropic";
             this.ArtistName = "matas";
-            this.TrackId = 49931;
+            this.TrackId = DateTime.Now.Ticks;
             this.TrackArtUrl = "https://i1.sndcdn.com/artworks-000000103093-941e7e-large.jpg";
         }
     }
