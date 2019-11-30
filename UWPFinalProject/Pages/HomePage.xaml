@@ -9,21 +9,21 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <RelativePanel Name="RootPanel">
-        <TextBlock Name="headerText" Text="Popular now" Margin="18, 18, 18, 6" Style="{StaticResource TitleTextBlockStyle}" Visibility="Collapsed"></TextBlock>
-        <ProgressRing Name="ProgressRing" IsActive="True" Visibility="Visible" HorizontalAlignment="Center" Width="50" Height="50" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-        <GridView Name="TrackGrid" ItemsSource="{x:Bind ViewModel.Tracks}" Margin="6, 6, 6, 6" RelativePanel.Below="headerText" Visibility="Collapsed">
+        <TextBlock Name="headerText" Text="Popular now" Margin="18, 18, 18, 6" Style="{StaticResource TitleTextBlockStyle}" Visibility="Visible"></TextBlock>
+        <ProgressRing Name="ProgressRing" IsActive="True" Visibility="Collapsed" HorizontalAlignment="Center" Width="50" Height="50" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+        <GridView Name="TrackGrid" ItemsSource="{x:Bind ViewModel.Tracks, Mode=OneWay}" Margin="6, 6, 6, 6" RelativePanel.Below="headerText">
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="ImageTextDataTemplate" x:DataType="local:Track">
-                    <StackPanel Height="226" Width="180" Margin="12" AutomationProperties.Name="{x:Bind TrackName}">
+                    <StackPanel Height="226" Width="180" Margin="12" AutomationProperties.Name="{x:Bind TrackName, Mode=OneWay}">
                         <Grid Width="180" Height="180">
                             <Grid.Background>
                                 <ImageBrush ImageSource="../Assets/Placeholder.jpg"></ImageBrush>
                             </Grid.Background>
-                            <Image Source="{x:Bind TrackArtUrl}" Stretch="UniformToFill" />
+                            <Image Source="{x:Bind TrackArtUrl, Mode=OneWay}" Stretch="UniformToFill" />
                         </Grid>
                         <StackPanel Margin="0,12">
-                            <TextBlock Text="{x:Bind TrackName}"/>
-                            <TextBlock Text="{x:Bind ArtistName}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            <TextBlock Text="{x:Bind TrackName, Mode=OneWay}"/>
+                            <TextBlock Text="{x:Bind ArtistName, Mode=OneWay}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

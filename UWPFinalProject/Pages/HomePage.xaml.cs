@@ -28,6 +28,12 @@ namespace UWPFinalProject.Pages {
             System.Collections.Generic.List<SoundCloud.Api.Entities.Track> result = await Task.Run(() => cloudAPI.GetPopularNow());
             Debug.WriteLine("INF: Populating view...");
             ViewModel = new TrackViewModel(result);
+            // this.ViewModel = new TrackViewModel();
+            Debug.WriteLine("INF: Done!");
+            // headerText.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            // ProgressRing.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            // ProgressRing.IsActive = false;
+            // TrackGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
     }
 }
