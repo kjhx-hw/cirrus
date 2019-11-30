@@ -17,7 +17,7 @@ namespace UWPFinalProject.Pages {
         /// If called without arguments, will simply populate
         /// the view with 50 of the default track.
         /// </summary>
-        public TrackViewModel() {
+        public TrackViewModel(List<SoundCloud.Api.Entities.Track> result) {
             for (int i = 0; i < 50; i++) {
                 this.tracks.Add(new Track());
             }

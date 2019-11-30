@@ -66,10 +66,12 @@ namespace UWPFinalProject.Model {
         /// the playlist returned.
         /// </summary>
         public async Task<List<Track>> GetPopularNow() {
-            List<Track> result = null;
+            List<Track> result = new List<Track>();
+            Playlist list = null;
 
             Debug.WriteLine("INF: Fetching Top 40 playlist...");
-            Playlist list = await client.Playlists.GetAsync(212109430);
+
+            list = await client.Playlists.GetAsync(212109430);
 
             foreach (var item in list.Tracks) {
                 if (item.Streamable == true) {

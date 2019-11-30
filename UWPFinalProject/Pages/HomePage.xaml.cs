@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Threading.Tasks;
 using UWPFinalProject.Model;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -21,13 +22,12 @@ namespace UWPFinalProject.Pages {
             }
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e) {
+        protected override async void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
             Debug.WriteLine("INF: Beginning on-navigate functions...");
-            ViewModel = new TrackViewModel(cloudAPI.GetPopularNow());
-            headerText.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            ProgressRing.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            TrackGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            System.Collections.Generic.List<SoundCloud.Api.Entities.Track> result = await Task.Run(() => cloudAPI.GetPopularNow());
+            Debug.WriteLine("INF: Populating view...");
+            ViewModel = new TrackViewModel(result);
         }
     }
 }
