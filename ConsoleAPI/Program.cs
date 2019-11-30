@@ -11,25 +11,15 @@ namespace ConsoleAPI {
 
         static async System.Threading.Tasks.Task Main(string[] args) {
             // CTRL FN F5
+            // Top 40 playlist: 212109430
 
             ISoundCloudClient client = SoundCloudClient.CreateUnauthorized(CLIENT_KEY);
             Console.WriteLine("Created API client with ID " + CLIENT_KEY);
 
-            Console.Write("Search ID: ");
-            var term = Console.ReadLine().Trim();
-            int q = 0;
-
-            Int32.TryParse(term, out q);
-
-            try {
-                await client.Tracks.GetAsync(q);
-            } catch (SoundCloud.Api.Exceptions.SoundCloudApiException e) {
-                Console.WriteLine("ERR: GetTrackData failed: " + e.HttpStatusCode);
+            var playlist = await client.Playlists.GetAsync(212109430);
+            foreach (var item in playlist.Tracks) {
+                Console.WriteLine(item.Title);
             }
-
-            // Get first page of Tracks
-            // var tracks = await client.Tracks.GetAllAsync(new TrackQueryBuilder { SearchString = term, Limit = 10 });
-            // await PageThrough(tracks, t => $"{t.Title} by {t.User.Username}");
         }
 
         private static async Task PageThrough<T>(SoundCloudList<T> list, Func<T, string> selector) where T : Entity {
