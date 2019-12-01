@@ -24,15 +24,11 @@
                     <FontIcon Glyph="&#xE71E;"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItem x:Uid="NowPlayingNavItem" Content="Now playing" Tag="PlayerPage">
-                <NavigationViewItem.Icon>
-                    <FontIcon Glyph="&#xE768;"/>
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
         </NavigationView.MenuItems>
 
         <Frame x:Name="ContentFrame" 
-           NavigationFailed="ContentFrame_OnNavigationFailed"/>
+           NavigationFailed="ContentFrame_OnNavigationFailed"
+           Navigated="ContentFrame_Navigated"/>
 
     </NavigationView>
 </Page>

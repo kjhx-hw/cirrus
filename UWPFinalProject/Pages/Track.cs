@@ -18,5 +18,12 @@ namespace UWPFinalProject.Pages {
             this.TrackId = 49931;
             this.TrackArtUrl = "https://i1.sndcdn.com/artworks-000000103093-941e7e-large.jpg";
         }
+
+        public override string ToString() {
+            string debugString = "Track:";
+            debugString += " " + this.TrackName + " by " + this.ArtistName + ".";
+            debugString += "\nTrackID " + this.TrackId + ".";
+            return debugString;
+        }
     }
 }

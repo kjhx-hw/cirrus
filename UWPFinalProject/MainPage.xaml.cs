@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UWPFinalProject.Pages;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -74,6 +75,14 @@ namespace UWPFinalProject
         private void nav_Loaded(object sender, RoutedEventArgs e) {
             nav.SelectedItem = nav.MenuItems[0];
             NavigateToView("HomePage");
+        }
+
+        private void ContentFrame_Navigated(object sender, NavigationEventArgs e) {
+            var cframe = ContentFrame.CurrentSourcePageType;
+            if (cframe.Name == "PlayerPage") {
+                nav.SelectedItem = null;
+                _lastItem = null;
+            }
         }
     }
 }

@@ -25,9 +25,21 @@ namespace UWPFinalProject.Pages {
         protected override async void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
             Debug.WriteLine("INF: Beginning on-navigate functions...");
-            System.Collections.Generic.List<SoundCloud.Api.Entities.Track> result = await Task.Run(() => cloudAPI.GetPopularNow());
+            //System.Collections.Generic.List<SoundCloud.Api.Entities.Track> result = await Task.Run(() => cloudAPI.GetPopularNow());
             Debug.WriteLine("INF: Populating view...");
-            ViewModel = new TrackViewModel(result);
+            //ViewModel = new TrackViewModel(result);
+            this.ViewModel = new TrackViewModel();
+            Debug.WriteLine("INF: Done!");
+            ProgressRing.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            ProgressRing.IsActive = false;
+            TrackGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+        }
+
+        private void TrackGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
+            Track selectedItem = TrackGrid.SelectedItems[0] as Track;
+            Debug.WriteLine(selectedItem.TrackId);
+            Frame.Navigate(typeof(PlayerPage), selectedItem);
+            
         }
     }
 }
