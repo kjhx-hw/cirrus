@@ -17,6 +17,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace UWPFinalProject.Pages {
     public sealed partial class PlayerPage : Page {
+        public const string TOGGLE_ICON_PAUSE = "pause";
+        public const string TOGGLE_ICON_PLAY = "play";
+        public const string TOGGLE_ICON_LOVE = "love";
+        public const string TOGGLE_ICON_UNLOVE = "unlove";
+
         Track passedTrack = null;
         SoundCloud.Api.Entities.Track fetchedTrack = null;
 
@@ -29,6 +34,8 @@ namespace UWPFinalProject.Pages {
 
             passedTrack = e.Parameter as Track;
             // get playermodel trackdata
+
+            PlayToggle.Content = TOGGLE_ICON_PAUSE;
         }
 
         private async void DebugButton_Tapped(object sender, TappedRoutedEventArgs e) {
@@ -39,6 +46,20 @@ namespace UWPFinalProject.Pages {
             };
 
             await dialog.ShowAsync();
+        }
+
+        private void PlayToggle_Tapped(object sender, TappedRoutedEventArgs e) {
+            if (PlayToggle.Content.ToString() == TOGGLE_ICON_PAUSE) {
+                // pause stream
+                PlayToggle.Content = TOGGLE_ICON_PLAY;
+            } else {
+                // resume stream
+                PlayToggle.Content = TOGGLE_ICON_PAUSE;
+            }
+        }
+
+        private void FavToggle_Tapped(object sender, TappedRoutedEventArgs e) {
+
         }
     }
 }

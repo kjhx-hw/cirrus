@@ -25,8 +25,8 @@
         <ListView RelativePanel.AlignLeftWith="trackImage" RelativePanel.Below="commentsText" RelativePanel.Above="PlayToggle" Margin="18, 9, 9, 9">
             
         </ListView>
-        <Button Name="PlayToggle" Content="play" Background="{ThemeResource SystemAccentColor}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="50" Height="50" Margin="18, 9, 9, 18"></Button>
-        <Button Name="FavoriteToggle" Content="love" Background="{ThemeResource SystemAccentColor}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="PlayToggle" Width="50" Height="50" Margin="9, 9, 9, 18"></Button>
+        <Button Name="PlayToggle" Tapped="PlayToggle_Tapped" Content="play" Background="{ThemeResource SystemAccentColor}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="50" Height="50" Margin="18, 9, 9, 18"></Button>
+        <Button Name="FavoriteToggle" Tapped="FavToggle_Tapped" Content="love" Background="{ThemeResource SystemAccentColor}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="PlayToggle" Width="50" Height="50" Margin="9, 9, 9, 18"></Button>
         <Button Name="DebugButton" Tapped="DebugButton_Tapped" RelativePanel.AlignBottomWithPanel="True" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RelativePanel.AlignRightWithPanel="True" Width="50" Height="50" Margin="9, 9, 18, 18"></Button>
     </RelativePanel>
 </Page>
