@@ -31,8 +31,8 @@ namespace UWPFinalProject.Pages {
         public TrackViewModel(ObservableCollection<SoundCloud.Api.Entities.Track> passedTracks) {
             foreach (var item in passedTracks) {
                 if (item.ArtworkUrl == null) {
-                    Debug.WriteLine("WRN: ArtworkUrl null. Setting to default.");
-                    item.ArtworkUrl = new Uri("../Assets/Placeholder.jpg");
+                    //Debug.WriteLine("WRN: ArtworkUrl null. Setting to default.");
+                    //item.ArtworkUrl = new Uri("../Assets/Placeholder.jpg");
                 }
 
                 this.tracks.Add(item);

@@ -2,6 +2,7 @@
 using SoundCloud.Api.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
@@ -65,21 +66,22 @@ namespace UWPFinalProject.Model {
         /// a list of Tracks. There is no way to control the size of
         /// the playlist returned.
         /// </summary>
-        public async Task<List<Track>> GetPopularNow() {
-            List<Track> result = new List<Track>();
-            Playlist list = null;
+        public async Task<ObservableCollection<Track>> GetPopularNow() {
+            ObservableCollection<Track> oc = new ObservableCollection<Track> { };
 
             Debug.WriteLine("INF: Fetching Top 40 playlist...");
-
-            list = await client.Playlists.GetAsync(212109430);
+            // Actual: 212109430
+            // Debug:  935438791
+            Playlist list = await client.Playlists.GetAsync(935438791);
 
             foreach (var item in list.Tracks) {
                 if (item.Streamable == true) {
-                    result.Add(item);
+                    oc.Add(item);
+                    Debug.WriteLine("INF: Adding " + item.Title + " to ObservableCollection.");
                 }
             }
 
-            return result;
+            return oc;
         }
 
         /// <summary>
