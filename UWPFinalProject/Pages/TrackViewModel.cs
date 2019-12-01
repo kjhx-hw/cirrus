@@ -10,7 +10,7 @@ using SoundCloud.Api.Entities;
 namespace UWPFinalProject.Pages {
     public class TrackViewModel {
         private ObservableCollection<Track> tracks = new ObservableCollection<Track>();
-        private List<SoundCloud.Api.Entities.Track> task;
+        private ObservableCollection<Track> task { get { return this.tracks; } }
 
         public ObservableCollection<Track> Tracks { get { return tracks; } }
 
@@ -25,8 +25,7 @@ namespace UWPFinalProject.Pages {
             }
         }
 
-        public TrackViewModel(List<SoundCloud.Api.Entities.Track> task) {
-            this.task = task;
+        public TrackViewModel(ObservableCollection<SoundCloud.Api.Entities.Track> task) {
             foreach (var item in task) {
                 Track temp = new Track() {
                     TrackName = item.Title,

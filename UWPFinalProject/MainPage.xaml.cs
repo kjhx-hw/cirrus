@@ -81,6 +81,7 @@ namespace UWPFinalProject
             var cframe = ContentFrame.CurrentSourcePageType;
             if (cframe.Name == "PlayerPage") {
                 nav.SelectedItem = null;
+                _lastItem = null;
             }
         }
     }

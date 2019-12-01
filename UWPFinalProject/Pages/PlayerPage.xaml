@@ -8,8 +8,25 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock HorizontalAlignment="Center" Text="Now playing" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="48" FontWeight="Normal"/>
-
-    </Grid>
+    <RelativePanel Name="RootPanel">
+        <TextBlock Name="headerText" Text="Now Playing" Margin="18, 18, 18, 9" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+        <Grid Name="trackImage" Width="180" Height="180" RelativePanel.Below="headerText" Margin="18, 9, 9, 9">
+            <Grid.Background>
+                <ImageBrush ImageSource="../Assets/Placeholder.jpg"></ImageBrush>
+            </Grid.Background>
+            <Image Source="{x:Bind passedTrack.TrackArtUrl}" Stretch="UniformToFill" />
+        </Grid>
+        <TextBlock Name="titleText" Text="{x:Bind passedTrack.TrackName}" RelativePanel.RightOf="trackImage" RelativePanel.Above="artistText" Margin="9, 9, 0, 0" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
+        <TextBlock Name="artistText" Text="{x:Bind passedTrack.ArtistName}" RelativePanel.RightOf="trackImage" RelativePanel.AlignBottomWith="trackImage" Margin="9, 0, 0, 0" Style="{StaticResource SubheaderTextBlockStyle}"></TextBlock>
+        <TextBlock Name="playsText" Text="123 plays" RelativePanel.Below="trackImage" RelativePanel.AlignLeftWith="trackImage" Margin="18, 9, 9, 9" Style="{StaticResource CaptionTextBlockStyle}"></TextBlock>
+        <TextBlock Name="heartsText" Text="456 hearts" RelativePanel.Below="trackImage" RelativePanel.RightOf="playsText" Margin="9, 9, 9, 9" Style="{StaticResource CaptionTextBlockStyle}"></TextBlock>
+        <TextBlock Name="commentsText" Text="789 comments" RelativePanel.Below="trackImage" RelativePanel.RightOf="heartsText" Margin="9, 9, 9, 9" Style="{StaticResource CaptionTextBlockStyle}"></TextBlock>
+        <TextBlock Name="tagsText" Text="tags: poor_teaching, bad_design, wow_it_works" RelativePanel.Below="trackImage" RelativePanel.RightOf="commentsText" Margin="9, 9, 9, 9" Style="{StaticResource CaptionTextBlockStyle}"></TextBlock>
+        <ListView RelativePanel.AlignLeftWith="trackImage" RelativePanel.Below="commentsText" RelativePanel.Above="PlayToggle" Margin="18, 9, 9, 9">
+            
+        </ListView>
+        <Button Name="PlayToggle" Content="play" Background="{ThemeResource SystemAccentColor}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="50" Height="50" Margin="18, 9, 9, 18"></Button>
+        <Button Name="FavoriteToggle" Content="love" Background="{ThemeResource SystemAccentColor}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="PlayToggle" Width="50" Height="50" Margin="9, 9, 9, 18"></Button>
+        <Button Name="DebugButton" Tapped="DebugButton_Tapped" RelativePanel.AlignBottomWithPanel="True" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RelativePanel.AlignRightWithPanel="True" Width="50" Height="50" Margin="9, 9, 18, 18"></Button>
+    </RelativePanel>
 </Page>

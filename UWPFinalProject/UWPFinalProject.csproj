@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="Model\CloudAPI.cs" />
     <Compile Include="Model\LocalStorage.cs" />
+    <Compile Include="Model\Player.cs" />
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
