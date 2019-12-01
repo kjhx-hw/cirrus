@@ -9,10 +9,8 @@ using SoundCloud.Api.Entities;
 
 namespace UWPFinalProject.Pages {
     public class TrackViewModel {
-        private ObservableCollection<Track> tracks = new ObservableCollection<Track>();
-        private ObservableCollection<Track> task { get { return this.tracks; } }
-
-        public ObservableCollection<Track> Tracks { get { return tracks; } }
+        private ObservableCollection<SoundCloud.Api.Entities.Track> tracks = new ObservableCollection<SoundCloud.Api.Entities.Track>();
+        public ObservableCollection<SoundCloud.Api.Entities.Track> Tracks { get { return this.tracks; } }
 
         /// <summary>
         /// If called without arguments, will simply populate
@@ -21,26 +19,23 @@ namespace UWPFinalProject.Pages {
         public TrackViewModel() {
             Debug.WriteLine("WRN: Using default dataset.");
             for (int i = 0; i < 50; i++) {
-                this.tracks.Add(new Track());
+                SoundCloud.Api.Entities.Track temp = new SoundCloud.Api.Entities.Track();
+
+                temp.Title = "Hobnotropic";
+                temp.User = new User { FullName = "matas" };
+                temp.Id = 49931;
+                temp.ArtworkUrl = new Uri("https://i1.sndcdn.com/artworks-000000103093-941e7e-large.jpg");
             }
         }
 
-        public TrackViewModel(ObservableCollection<SoundCloud.Api.Entities.Track> task) {
-            foreach (var item in task) {
-                Track temp = new Track() {
-                    TrackName = item.Title,
-                    ArtistName = item.User.Username,
-                    TrackId = item.Id
-                };
-
-                try {
-                    temp.TrackArtUrl = item.ArtworkUrl.ToString();
-                } catch (Exception) {
+        public TrackViewModel(ObservableCollection<SoundCloud.Api.Entities.Track> passedTracks) {
+            foreach (var item in passedTracks) {
+                if (item.ArtworkUrl == null) {
                     Debug.WriteLine("WRN: ArtworkUrl null. Setting to default.");
-                    temp.TrackArtUrl = "../Assets/Placeholder.jpg";
+                    item.ArtworkUrl = new Uri("../Assets/Placeholder.jpg");
                 }
 
-                this.tracks.Add(temp);
+                this.tracks.Add(item);
             }
         }
     }
