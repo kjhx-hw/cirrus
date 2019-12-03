@@ -9,7 +9,7 @@ using SoundCloud.Api.Entities;
 
 namespace UWPFinalProject.Pages {
     public class TrackViewModel {
-        private ObservableCollection<Track> tracks = new ObservableCollection<Track>();
+        public ObservableCollection<Track> tracks = new ObservableCollection<Track>();
         private ObservableCollection<Track> task { get { return this.tracks; } }
 
         public ObservableCollection<Track> Tracks { get { return tracks; } }
@@ -19,10 +19,10 @@ namespace UWPFinalProject.Pages {
         /// the view with 50 of the default track.
         /// </summary>
         public TrackViewModel() {
-            Debug.WriteLine("WRN: Using default dataset.");
-            for (int i = 0; i < 50; i++) {
-                this.tracks.Add(new Track());
-            }
+            //Debug.WriteLine("WRN: Using default dataset.");
+            //for (int i = 0; i < 50; i++) {
+            //    this.tracks.Add(new Track());
+            //}
         }
 
         public TrackViewModel(ObservableCollection<SoundCloud.Api.Entities.Track> task) {

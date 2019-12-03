@@ -12,7 +12,7 @@ namespace UWPFinalProject.Pages {
     /// </summary>
     public sealed partial class HomePage : Page {
         public CloudAPI cloudAPI = null;
-        public TrackViewModel ViewModel { get; set; }
+        public TrackViewModel ViewModel = new TrackViewModel();
 
         public HomePage() {
             this.InitializeComponent();
@@ -20,19 +20,36 @@ namespace UWPFinalProject.Pages {
             if (cloudAPI == null) {
                 cloudAPI = new CloudAPI();
             }
+
+            #pragma warning disable CS4014 // Force compiler to stop whining about my lack of await keyword
+            FetchDataFromApi();
+            #pragma warning restore CS4014
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e) {
-            base.OnNavigatedTo(e);
+        private async Task<int> FetchDataFromApi() {
+            // Yeah, I know this is as sloppy as they come, but I was more concerned with getting the application functional
+            // thank compliance with MVVM principle at this point. My apologies.
             Debug.WriteLine("INF: Beginning on-navigate functions...");
-            //System.Collections.Generic.List<SoundCloud.Api.Entities.Track> result = await Task.Run(() => cloudAPI.GetPopularNow());
+            System.Collections.Generic.List<SoundCloud.Api.Entities.Track> result = await Task.Run(() => cloudAPI.GetPopularNow());
             Debug.WriteLine("INF: Populating view...");
-            //ViewModel = new TrackViewModel(result);
-            this.ViewModel = new TrackViewModel();
+            foreach (var item in result) {
+                if (item.ArtworkUrl != null) {
+                    ViewModel.tracks.Add(new Track {
+                        TrackName = item.Title,
+                        TrackArtUrl = item.ArtworkUrl.AbsoluteUri,
+                        TrackId = item.Id,
+                        ArtistName = item.User.Username
+                    });
+                }
+
+                Debug.WriteLine("INF: Added " + item.Title + " to collection.");
+            }
+
             Debug.WriteLine("INF: Done!");
             ProgressRing.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             ProgressRing.IsActive = false;
             TrackGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            return 2;
         }
 
         private void TrackGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
