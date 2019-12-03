@@ -15,16 +15,16 @@
         <GridView Name="TrackGrid" ItemsSource="{x:Bind ViewModel.Tracks, Mode=OneWay}" Margin="6, 6, 6, 6" RelativePanel.Below="headerText" Visibility="Collapsed" Tapped="TrackGrid_Tapped">
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="ImageTextDataTemplate" x:DataType="local:Track">
-                    <StackPanel Height="226" Width="180" Margin="12" AutomationProperties.Name="{x:Bind TrackName, Mode=OneWay}">
+                    <StackPanel Height="226" Width="180" Margin="12" AutomationProperties.Name="{x:Bind TrackName}">
                         <Grid Width="180" Height="180">
                             <Grid.Background>
                                 <ImageBrush ImageSource="../Assets/Placeholder.jpg"></ImageBrush>
                             </Grid.Background>
-                            <Image Source="{x:Bind TrackArtUrl, Mode=OneWay}" Stretch="UniformToFill" />
+                            <Image Source="{x:Bind TrackArtUrl}" Stretch="UniformToFill" />
                         </Grid>
                         <StackPanel Margin="0,12">
-                            <TextBlock Text="{x:Bind TrackName, Mode=OneWay}"/>
-                            <TextBlock Text="{x:Bind ArtistName, Mode=OneWay}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            <TextBlock Text="{x:Bind TrackName}"/>
+                            <TextBlock Text="{x:Bind ArtistName}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

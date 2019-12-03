@@ -28,7 +28,7 @@ namespace UWPFinalProject.Model {
         /// When passed in a single Track Id, fetches it from the API
         /// and returns that Track back to the caller.
         /// </summary>
-        public async Task<Track> GetTrack(int Id) {
+        public async Task<Track> GetTrack(long Id) {
             Track result = null;
 
             try {
@@ -45,7 +45,7 @@ namespace UWPFinalProject.Model {
         /// When passed in a List of Track Ids, iterates through the List
         /// and fetches each Track, returning them as a List of Tracks.
         /// </summary>
-        public async Task<List<Track>> GetAllTracks(List<int> idList) {
+        public async Task<List<Track>> GetAllTracks(List<long> idList) {
             List<Track> result = null;
 
             foreach (var id in idList) {
