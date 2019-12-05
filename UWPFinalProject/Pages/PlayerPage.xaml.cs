@@ -20,10 +20,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace UWPFinalProject.Pages {
     public sealed partial class PlayerPage : Page {
-        public const string TOGGLE_ICON_PAUSE = "pause";
-        public const string TOGGLE_ICON_PLAY = "play";
-        public const string TOGGLE_ICON_LOVE = "love";
-        public const string TOGGLE_ICON_UNLOVE = "unlove";
+        public const string TOGGLE_ICON_PAUSE = "⏸";
+        public const string TOGGLE_ICON_PLAY = "►";
+        public const string TOGGLE_ICON_LOVE = "♡";
+        public const string TOGGLE_ICON_UNLOVE = "♥";
+
         private LocalStorage localstorage;
 
 
