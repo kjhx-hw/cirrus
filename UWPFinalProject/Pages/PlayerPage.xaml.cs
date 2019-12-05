@@ -62,6 +62,14 @@ namespace UWPFinalProject.Pages {
             track = await model.FetchTrackEntity(passedTrack.TrackId);
             fetchedTrack = track;
             model.StreamFromURL(fetchedTrack.StreamUrl.AbsoluteUri + "?client_id=b4901850db2a3fd767b36a91a2793cef");
+
+            playsText.Text = track.PlaybackCount.ToString() + playsText.Text;
+            heartsText.Text = track.LikesCount.ToString() + heartsText.Text;
+            commentsText.Text = track.CommentCount.ToString() + commentsText.Text;
+
+            ProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            PlayToggle.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            FavoriteToggle.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
 
         private async void DebugButton_Tapped(object sender, TappedRoutedEventArgs e) {
@@ -76,11 +84,9 @@ namespace UWPFinalProject.Pages {
 
         private void PlayToggle_Tapped(object sender, TappedRoutedEventArgs e) {
             if (PlayToggle.Content.ToString() == TOGGLE_ICON_PAUSE) {
-                // pause stream
                 model.Pause();
                 PlayToggle.Content = TOGGLE_ICON_PLAY;
             } else {
-                // resume stream
                 model.Play();
                 PlayToggle.Content = TOGGLE_ICON_PAUSE;
             }

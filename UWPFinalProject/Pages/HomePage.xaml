@@ -23,7 +23,7 @@
                             <Image Source="{x:Bind TrackArtUrl}" Stretch="UniformToFill" />
                         </Grid>
                         <StackPanel Margin="0,12">
-                            <TextBlock Text="{x:Bind TrackName}"/>
+                            <TextBlock Text="{x:Bind TrackName}" TextTrimming="CharacterEllipsis"/>
                             <TextBlock Text="{x:Bind ArtistName}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                         </StackPanel>
                     </StackPanel>
