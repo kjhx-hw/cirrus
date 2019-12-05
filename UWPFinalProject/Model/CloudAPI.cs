@@ -86,6 +86,36 @@ namespace UWPFinalProject.Model {
         }
 
         /// <summary>
+        /// Searches the SoundCloud API with a string
+        /// and returns the results as a List of tracks.
+        /// </summary>
+        public async Task<List<Pages.Track>> SearchTrack(string query) {
+            List<Pages.Track> result = new List<Pages.Track> { };
+
+            SoundCloud.Api.Entities.SoundCloudList<SoundCloud.Api.Entities.Track> tracks = await client.Tracks.GetAllAsync(new SoundCloud.Api.QueryBuilders.TrackQueryBuilder { SearchString = query });
+            Debug.WriteLine("Search done: populating list");
+            foreach (var item in tracks) {
+                if (item.Streamable == true) {
+                    var temp = new Pages.Track
+                    {
+                        TrackId = item.Id,
+                        TrackName = item.Title,
+                        ArtistName = item.User.Username
+                    };
+                    if(item.ArtworkUrl != null) {
+                        temp.TrackArtUrl = item.ArtworkUrl.AbsoluteUri;
+                    } else {
+                        temp.TrackArtUrl = "../Assets/Placeholder.jpg";
+                    }
+
+                    result.Add(temp);
+                }
+            }
+            
+            return result;
+        }
+
+        /// <summary>
         /// Tests the API connection by requesting the Track Id of
         /// a known track, then comparing the returned value. This
         /// function is for early debug only.

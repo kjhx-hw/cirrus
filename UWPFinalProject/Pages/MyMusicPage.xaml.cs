@@ -29,7 +29,6 @@ namespace UWPFinalProject.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            List<long> l = localStorage.FavoritesList;
             string x = localStorage.StoredFavorites;
             string y = (string)ApplicationData.Current.LocalSettings.Values["Json"];
             //deserialize the json and populate the list should the list exist
