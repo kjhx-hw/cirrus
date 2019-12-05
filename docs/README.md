@@ -25,6 +25,20 @@ Written by Kyle Huggins and Riley Judd for COMP 4450.
 ### ViewModel
 * `UWPFinalProject/Pages/TrackViewModel.cs`
 
+## Teammate Contribution
+
+### Riley Judd
+* List item
+
+### Kyle Huggins
+* MainPage (Navigation Host)
+* HomePage UI, backend, misc.
+* PlayerPage UI, backend (except MediaPlayer)
+* SettingsPage UI, API interaction
+* API Interaction Model
+* Player Model API interactions
+* ViewModel Class
+
 ## Dependencies
 
 - [SoundCloud.Api](soundcloudapi)
