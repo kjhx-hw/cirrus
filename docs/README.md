@@ -28,7 +28,12 @@ Written by Kyle Huggins and Riley Judd for COMP 4450.
 ## Teammate Contribution
 
 ### Riley Judd
-* List item
+* LocalStorage Class
+* LocalStorage Model interactions
+* Search Page UI, backend
+* Player Page Media Player functionality
+* MyMusicPage UI, backend
+* Logo design and implementation
 
 ### Kyle Huggins
 * MainPage (Navigation Host)
