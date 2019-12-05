@@ -25,9 +25,9 @@
         <ListView RelativePanel.AlignLeftWith="trackImage" RelativePanel.Below="commentsText" RelativePanel.Above="PlayToggle" Margin="18, 9, 9, 9">
             
         </ListView>
-        <ProgressBar Name="ProgressBar" Visibility="Visible" IsIndeterminate="True" Width="Auto" RelativePanel.LeftOf="DebugButton" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Margin="18, 9, 9, 18"/>
-        <Button Name="PlayToggle" Visibility="Collapsed" Tapped="PlayToggle_Tapped" Content="play" Background="{ThemeResource SystemAccentColor}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="50" Height="50" Margin="18, 9, 9, 18"></Button>
-        <Button Name="FavoriteToggle" Visibility="Collapsed" Tapped="FavToggle_Tapped" Content="love" Background="{ThemeResource SystemAccentColor}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="PlayToggle" Width="50" Height="50" Margin="9, 9, 9, 18"></Button>
+        <ProgressBar Name="ProgressBar" Visibility="Collapsed" IsIndeterminate="True" Width="Auto" RelativePanel.LeftOf="DebugButton" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Margin="18, 9, 9, 18"/>
+        <Button Name="PlayToggle" Visibility="Visible" Tapped="PlayToggle_Tapped" Content="play" Background="{ThemeResource SystemAccentColor}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="50" Height="50" Margin="18, 9, 9, 18"></Button>
+        <Button Name="FavoriteToggle" Visibility="Visible" Tapped="FavToggle_Tapped" Content="love" Background="{ThemeResource SystemAccentColor}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="PlayToggle" Width="50" Height="50" Margin="9, 9, 9, 18"></Button>
         <Button Name="DebugButton" Tapped="DebugButton_Tapped" RelativePanel.AlignBottomWithPanel="True" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RelativePanel.AlignRightWithPanel="True" Width="50" Height="50" Margin="9, 9, 18, 18"></Button>
     </RelativePanel>
 </Page>

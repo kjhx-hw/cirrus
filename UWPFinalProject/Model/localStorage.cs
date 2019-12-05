@@ -11,7 +11,7 @@ using Windows.Storage;
 namespace UWPFinalProject.Model {
     public class LocalStorage {
         private string storedFavorites;
-        private List<int> favoritesList;
+        private List<long> favoritesList;
 
         public string StoredFavorites {
             get {
@@ -23,7 +23,7 @@ namespace UWPFinalProject.Model {
             }
         }
 
-        public List<int> FavoritesList {
+        public List<long> FavoritesList {
             get {
                 return favoritesList;
             }
@@ -34,32 +34,31 @@ namespace UWPFinalProject.Model {
         //should LocalSettings Already exist, populate object with stored data
         //if not, create new data
         public LocalStorage() {
+
             storedFavorites = (string)ApplicationData.Current.LocalSettings.Values["Json"];
             if (storedFavorites != null && storedFavorites != "") { 
-                favoritesList = JsonConvert.DeserializeObject<List<int>>(storedFavorites);
+                favoritesList = JsonConvert.DeserializeObject<List<long>>(storedFavorites);
             } else {
-                favoritesList = new List<int>();
+                favoritesList = new List<long>();
                 storedFavorites = "";
             }
         }
 
         //add an item to the list of favorites
         //don't let the user add a song that already exists
-        public void addItem(string newItem) {
+        public void addItem(long newItemId) {
             //should probably make sure only a number is passed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            int newId = Convert.ToInt32(newItem);
-            if(favoritesList.Contains(newId)) {
+            if(favoritesList.Contains(newItemId)) {
                 //alert user that item is already in favorites list
             } else {
-                favoritesList.Add(newId);
+                favoritesList.Add(newItemId);
             }
         }
 
         //remove an item from the list of favorites
         //don't let them remove a song that doesn't exist
-        public void deleteItem(string itemToDelete)
+        public void deleteItem(long IdToDelete)
         {
-            int IdToDelete = Convert.ToInt32(itemToDelete);
             if (favoritesList.Contains(IdToDelete)) {
                 favoritesList.Remove(IdToDelete);
             } else {
@@ -77,7 +76,7 @@ namespace UWPFinalProject.Model {
         //retrieve the data from LocalSettings and deserialize it into the  favoritesList
         public void deserializeFavorites() {
             storedFavorites = (string)ApplicationData.Current.LocalSettings.Values["Json"];
-            favoritesList = JsonConvert.DeserializeObject<List<int>>(storedFavorites);
+            favoritesList = JsonConvert.DeserializeObject<List<long>>(storedFavorites);
         }
     }
 }

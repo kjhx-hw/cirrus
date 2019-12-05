@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,6 +24,8 @@ namespace UWPFinalProject.Pages {
         public const string TOGGLE_ICON_PLAY = "play";
         public const string TOGGLE_ICON_LOVE = "love";
         public const string TOGGLE_ICON_UNLOVE = "unlove";
+        private LocalStorage localstorage;
+
 
         Player model = new Player();
 
@@ -31,6 +34,7 @@ namespace UWPFinalProject.Pages {
 
         public PlayerPage() {
             this.InitializeComponent();
+            localstorage = new LocalStorage();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -40,12 +44,23 @@ namespace UWPFinalProject.Pages {
             getTrackDataAsync();
 
             PlayToggle.Content = TOGGLE_ICON_PAUSE;
+            if(localstorage.FavoritesList.Contains(passedTrack.TrackId)) {
+                FavoriteToggle.Content = TOGGLE_ICON_UNLOVE;
+            } else {
+                FavoriteToggle.Content = TOGGLE_ICON_LOVE;
+            }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e) {
+            base.OnNavigatedFrom(e);
+            model.ClosePlayer();
         }
 
         private async void getTrackDataAsync() {
             SoundCloud.Api.Entities.Track track = null;
             track = await model.FetchTrackEntity(passedTrack.TrackId);
-
+            fetchedTrack = track;
+            model.StreamFromURL(fetchedTrack.StreamUrl.AbsoluteUri + "?client_id=b4901850db2a3fd767b36a91a2793cef");
         }
 
         private async void DebugButton_Tapped(object sender, TappedRoutedEventArgs e) {
@@ -61,15 +76,27 @@ namespace UWPFinalProject.Pages {
         private void PlayToggle_Tapped(object sender, TappedRoutedEventArgs e) {
             if (PlayToggle.Content.ToString() == TOGGLE_ICON_PAUSE) {
                 // pause stream
+                model.Pause();
                 PlayToggle.Content = TOGGLE_ICON_PLAY;
             } else {
                 // resume stream
+                model.Play();
                 PlayToggle.Content = TOGGLE_ICON_PAUSE;
             }
         }
 
         private void FavToggle_Tapped(object sender, TappedRoutedEventArgs e) {
-
+            if (localstorage.FavoritesList.Contains(passedTrack.TrackId)) {
+                //remove from favorites list
+                localstorage.deleteItem(passedTrack.TrackId);
+                localstorage.serializeFavorites();
+                FavoriteToggle.Content = TOGGLE_ICON_LOVE;
+            } else {
+                //add to favorites list
+                localstorage.addItem(passedTrack.TrackId);
+                localstorage.serializeFavorites();
+                FavoriteToggle.Content = TOGGLE_ICON_UNLOVE;
+            }
         }
     }
 }

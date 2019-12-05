@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Media.Core;
 using Windows.Media.Playback;
+using Windows.System.Display;
 
 namespace UWPFinalProject.Model {
     class Player {
@@ -38,6 +40,20 @@ namespace UWPFinalProject.Model {
             mediaPlayer.AudioCategory = MediaPlayerAudioCategory.Media;
             mediaPlayer.AutoPlay = true;
             // set source
+            Uri uri = new Uri(Url);
+            mediaPlayer.Source = MediaSource.CreateFromUri(uri);
+        }
+
+        public void Pause() {
+            mediaPlayer.Pause();
+        }
+
+        public void Play() {
+            mediaPlayer.Play();
+        }
+
+        public void ClosePlayer() {
+            mediaPlayer.Dispose();
         }
     }
 }

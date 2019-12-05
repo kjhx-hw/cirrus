@@ -9869,24 +9869,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kjhuggins\\.nuget\\packages\\": {},
+    "C:\\Users\\themi\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\misc\\Cirrus\\UWPFinalProject\\UWPFinalProject.csproj",
+      "projectUniqueName": "C:\\Users\\themi\\Documents\\GitHub\\cirrus\\UWPFinalProject\\UWPFinalProject.csproj",
       "projectName": "UWPFinalProject",
-      "projectPath": "C:\\misc\\Cirrus\\UWPFinalProject\\UWPFinalProject.csproj",
-      "packagesPath": "C:\\Users\\kjhuggins\\.nuget\\packages\\",
-      "outputPath": "C:\\misc\\Cirrus\\UWPFinalProject\\obj\\",
+      "projectPath": "C:\\Users\\themi\\Documents\\GitHub\\cirrus\\UWPFinalProject\\UWPFinalProject.csproj",
+      "packagesPath": "C:\\Users\\themi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\themi\\Documents\\GitHub\\cirrus\\UWPFinalProject\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\kjhuggins\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\themi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

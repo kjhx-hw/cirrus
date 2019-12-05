@@ -27,7 +27,7 @@ namespace UWPFinalProject.Model {
         /// <summary>
         /// When passed in a single Track Id, fetches it from the API
         /// and returns that Track back to the caller.
-        /// </summary>
+        /// </summary>//
         public async Task<Track> GetTrack(long Id) {
             Track result = null;
 
@@ -46,15 +46,18 @@ namespace UWPFinalProject.Model {
         /// and fetches each Track, returning them as a List of Tracks.
         /// </summary>
         public async Task<List<Track>> GetAllTracks(List<long> idList) {
-            List<Track> result = null;
-
+            List<Track> result = new List<Track>();
+            int x = 0;
             foreach (var id in idList) {
+                
                 try {
                     Track track = await client.Tracks.GetAsync(id);
                     result.Add(track);
+                    Debug.WriteLine("Item added");
                 } catch (SoundCloud.Api.Exceptions.SoundCloudApiException e) {
                     Debug.WriteLine("ERR: Could not get track data for track " + id + "(" + e.HttpStatusCode + ")");
                 }
+                Debug.WriteLine("Finished Item");
             }
 
             return result;
